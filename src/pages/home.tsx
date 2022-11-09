@@ -6,9 +6,9 @@ import { Box,  Typography } from "@mui/material"
 
 const Home = () =>{
 return (
-    <Box>
-<Typography>Hello there</Typography>
-    </Box>
+  
+<Box>Hello there</Box>
+    
 )
 }
 
