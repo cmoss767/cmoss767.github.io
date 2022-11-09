@@ -15,8 +15,7 @@ import Router from "./router"
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
      
-       
-             <Typography>Hello World</Typography>
+             <Router/>
             
     </React.StrictMode>
 )
