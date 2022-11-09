@@ -1,16 +1,14 @@
-import { Navigate, Route, Routes, useLocation } from "react-router-dom"
+import {  Route, Routes } from "react-router-dom"
+import Home from "pages/home"
 
 
-import { ReactElement } from "react"
 
 
 
 export const Router = () => {
   return (
     <Routes>
-      
-     
-        
+      <Route path="/" element={<Home/>}/>
     </Routes>
   )
 }
