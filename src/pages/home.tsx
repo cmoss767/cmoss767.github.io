@@ -3,7 +3,9 @@ import { AppBar, Box, Button, Card, IconButton,  Toolbar, Typography } from "@mu
 import MenuIcon from "@mui/icons-material/Menu"
 import {useState} from "react"
 import Brightness4Icon from '@mui/icons-material/Brightness4'
-import NightsStayIcon from '@mui/icons-material/NightsStay';
+import NightsStayIcon from '@mui/icons-material/NightsStay'
+import CallMadeIcon from '@mui/icons-material/CallMade'
+import img from "./headshot.png"
 
 
 
@@ -28,7 +30,7 @@ const Home = () =>{
       </Toolbar>
     </AppBar>
     <Box sx={{display:'flex', flexDirection:'row'}}>
-    <Box sx={{width:"50%", display:'flex', justifyContent:'center'}}>
+    <Box sx={{width:"40%", display:'flex', justifyContent:'center'}}>
       <Card sx={{ my:5, backgroundColor:'primary.dark', p:2}}>
         <Box sx={{mb:2}}>
           <Typography variant="h1" sx={{color: diplay ? "secondary.main" : "primary.main"}}>
@@ -48,13 +50,16 @@ const Home = () =>{
         </Box>
       </Card>
     </Box>
-    <Box sx={{width:"50%", display:'flex', justifyContent:'center', my:5}}>
-      <Box>
-        <img src="/headshot.png" alt="chris headshot"/>
+    
+    <Box sx={{width:"40%", display:'flex', justifyContent:'center', my:5}}>
+      <Box sx={{ml:15}}>
+        <CallMadeIcon sx={{fontSize:100}}/>
+        <img src={img} alt="chris headshot" width="200px"/>
       </Box>
 
     </Box>
     </Box>
+    
   </Box>
   </>
   )
