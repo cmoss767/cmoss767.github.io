@@ -2,46 +2,49 @@
 import { AppBar, Box, Button, Card, IconButton,  Toolbar, Typography } from "@mui/material"
 import MenuIcon from "@mui/icons-material/Menu"
 import {useState} from "react"
-import Brightness4Icon from '@mui/icons-material/Brightness4'
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import NightsStayIcon from '@mui/icons-material/NightsStay'
 import CallMadeIcon from '@mui/icons-material/CallMade'
 import img from "./headshot.png"
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+import * as React from 'react';
+import {ColorModeContext} from "../router"
 
 
 
 const Home = () =>{
-  const [diplay, setDisplay] = useState(true)
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+
   return (
     <>
-  <Box  sx={{height:"100%", width:"100%", backgroundColor: diplay ? "primary.main" : "secondary.light"}}>
-    <AppBar position="static" sx={{height:"100%", width:"100%", backgroundColor: diplay ? "primary.dark" : "primary.light"}}>
-      <Toolbar >
-        <Button variant="contained" sx={{color: diplay ? "secondary.main" : "primary.main"}} >
+  <Box  sx={{height:"100vh", width:"100%", bgcolor: 'background.default'}}>
+    
+      <Toolbar sx={{border:1, borderColor:'gray', boxShadow: 2, bgcolor: 'background.default'}}>
+        <Button variant="contained" sx={{color: 'text.primary', bgcolor: 'background.default'}} >
           Home
         </Button>
         <Box sx={{ width:'100%', display:'flex', flexDirection:'row', justifyContent:'right'}}>
-          <IconButton onClick={()=>setDisplay(true)}>
-            <Brightness4Icon />
-          </IconButton >
-          <IconButton sx={{  ml:1 }} onClick={()=>setDisplay(false)}>
-            <NightsStayIcon />
-          </IconButton>
+        <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+        {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+      </IconButton>
         </Box>  
       </Toolbar>
-    </AppBar>
+    
     <Box sx={{display:'flex', flexDirection:'row'}}>
     <Box sx={{width:"40%", display:'flex', justifyContent:'center'}}>
-      <Card sx={{ my:5, backgroundColor:'primary.dark', p:2}}>
+      <Card sx={{ my:5, bgcolor: 'background.default', p:2}}>
         <Box sx={{mb:2}}>
-          <Typography variant="h1" sx={{color: diplay ? "secondary.main" : "primary.main"}}>
+          <Typography variant="h1" sx={{color: 'text.primary'}}>
             Hello there! My name is Chris -- I am a software developer.
           </Typography>
         </Box>
         <Box>
-          <Typography variant="h2" sx={{color: diplay ? "secondary.main" : "primary.main"}}>
+          <Typography variant="h2" sx={{color: 'text.primary'}}>
             I am making this website for a couple of reasons:
           </Typography>
-          <Typography variant="body1" sx={{color: diplay ? "secondary.main" : "primary.main"}}>
+          <Typography variant="body1" sx={{color: 'text.primary'}}>
   
             One -- I want to share my professional journey as a software developer.
             <br/>
