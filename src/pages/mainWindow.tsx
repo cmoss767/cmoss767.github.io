@@ -8,16 +8,45 @@ import {
 } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io"
 import { FaSkiing } from "react-icons/fa"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import About from "./About"
 import Skills from "./Skills"
 import Projects from "./Projects"
 import { TiMessageTyping } from "react-icons/ti"
+import Dots from "./Dots/Dots"
 
 const MainWindow = () => {
   const [openAbout, setOpenAbout] = useState(false)
   const [openSkills, setOpenSkills] = useState(false)
   const [openProjects, setOpenProjects] = useState(false)
+
+  const [showDots, setShowDots] = useState<{
+    dots1: boolean
+    dots2: boolean
+    dots3: boolean
+  }>({ dots1: true, dots2: false, dots3: false })
+  const [showText, setShowText] = useState<{
+    text1: boolean
+    text2: boolean
+    text3: boolean
+  }>({ text1: true, text2: false, text3: false })
+
+  useEffect(() => {
+    if (showDots?.dots1 || showDots?.dots2 || showDots?.dots3) {
+      setTimeout(() => {
+        if (showDots?.dots1) {
+          setShowDots({ ...showDots, dots1: false, dots2: true })
+          setShowText({ ...showText, text2: true })
+        } else if (showDots?.dots2) {
+          setShowDots({ ...showDots, dots2: false, dots3: true })
+          setShowText({ ...showText, text3: true })
+        } else if (showDots?.dots3) {
+          setShowDots({ ...showDots, dots3: false })
+        }
+      }, 2000)
+    }
+  }, [showDots])
+
   return (
     <>
       <div className="container absolute left-1/2 top-1/2 ">
@@ -28,7 +57,27 @@ const MainWindow = () => {
               <IoIosArrowUp className="ml-1" />
               <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black"></strong>
             </div>
-            <div className="bg-[#f9efe4] h-80 w-full border-2 border-black"></div>
+            <div className="bg-[#f9efe4] h-80 w-full border-2 border-black p-2">
+              {showText.text1 && (
+                <div className="flex row">
+                  <span className="mr-1">Installing CoolFactor.exe</span>
+                  {showDots?.dots1 && <Dots />}
+                </div>
+              )}
+              {showText.text2 && (
+                <div className="flex row">
+                  <span className="mr-1">Building Life Experience</span>
+                  {showDots?.dots2 && <Dots />}
+                </div>
+              )}
+              {showText.text3 && (
+                <div className="flex row">
+                  <span className="mr-1">Rendering Professional Mode</span>
+                  {showDots?.dots3 && <Dots />}
+                </div>
+              )}
+            </div>
+
             <div className="flex flex-row mt-2">
               <button
                 className="border-2  border-black h-20 w-24"
