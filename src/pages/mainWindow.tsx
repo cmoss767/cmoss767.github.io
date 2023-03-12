@@ -14,11 +14,13 @@ import Skills from "./Skills"
 import Projects from "./Projects"
 import { TiMessageTyping } from "react-icons/ti"
 import Dots from "./Dots/Dots"
+import Terminal from "./Terminal"
 
 const MainWindow = () => {
   const [openAbout, setOpenAbout] = useState(false)
   const [openSkills, setOpenSkills] = useState(false)
   const [openProjects, setOpenProjects] = useState(false)
+  const [terminal, setTerminal] = useState<string[]>([])
 
   const [showDots, setShowDots] = useState<{
     dots1: boolean
@@ -29,7 +31,15 @@ const MainWindow = () => {
     text1: boolean
     text2: boolean
     text3: boolean
-  }>({ text1: true, text2: false, text3: false })
+    greetingText: boolean
+    terminal: boolean
+  }>({
+    text1: true,
+    text2: false,
+    text3: false,
+    greetingText: false,
+    terminal: false,
+  })
 
   useEffect(() => {
     if (showDots?.dots1 || showDots?.dots2 || showDots?.dots3) {
@@ -42,8 +52,22 @@ const MainWindow = () => {
           setShowText({ ...showText, text3: true })
         } else if (showDots?.dots3) {
           setShowDots({ ...showDots, dots3: false })
+          setShowText({
+            ...showText,
+            text1: false,
+            text2: false,
+            text3: false,
+            greetingText: true,
+          })
         }
       }, 2000)
+    } else if (showText.greetingText && !showText.terminal) {
+      setTimeout(() => {
+        setShowText({
+          ...showText,
+          terminal: true,
+        })
+      }, 1000)
     }
   }, [showDots])
 
@@ -57,7 +81,7 @@ const MainWindow = () => {
               <IoIosArrowUp className="ml-1" />
               <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black"></strong>
             </div>
-            <div className="bg-[#f9efe4] h-80 w-full border-2 border-black p-2">
+            <div className="bg-[#f9efe4] h-80 w-full border-2 border-black p-2 overflow-auto">
               {showText.text1 && (
                 <div className="flex row">
                   <span className="mr-1">Installing CoolFactor.exe</span>
@@ -75,6 +99,27 @@ const MainWindow = () => {
                   <span className="mr-1">Rendering Professional Mode</span>
                   {showDots?.dots3 && <Dots />}
                 </div>
+              )}
+              {showText.greetingText && (
+                <div className="text-center">
+                  <h2 className="text-3xl">Hi there, I'm Chris. 👋 </h2>
+                  <span className="text-xl">Welcome to my Site</span>
+                </div>
+              )}
+              {showText.terminal && (
+                <>
+                  <div className="mt-2">
+                    <span className="text-lg">Need Help?</span>
+                    <br />
+                    <span className="text-sm">
+                      Type help in the command line to see available options
+                    </span>
+                  </div>
+                  {terminal.map((line: string) => (
+                    <div>{line}</div>
+                  ))}
+                  <Terminal terminal={terminal} setTerminal={setTerminal} />
+                </>
               )}
             </div>
 
