@@ -10,29 +10,29 @@ const Terminal = ({ setTerminal, terminal }: TerminalProps) => {
   const [value, setValue] = useState("")
   const [currentDirectory, setCurrentDirectory] = useState("root")
   const [commandHistory, setCommandHistory] = useState<string[]>([])
-  const [historyIndex, setHistoryIndex] = useState<number>(
-    commandHistory.length - 1
-  )
+  const [historyIndex, setHistoryIndex] = useState<number>(0)
+
   const handleKeyDown = (e: any) => {
-    setCommandHistory((commandHistory) => [...commandHistory, e.target.value])
+    //up arrow
     if (e.keyCode === 38) {
-      console.log("up")
-      //up arrow
-      if (historyIndex >= 0) {
-        console.log("con")
-        setValue(commandHistory[historyIndex])
+      setValue(commandHistory[historyIndex])
+      if (historyIndex > 0) {
         setHistoryIndex(historyIndex - 1)
       }
     }
+    //down arrow
     if (e.keyCode === 40) {
-      console.log("down")
-      if (historyIndex >= 0) {
-        console.log("condd")
-        setValue(commandHistory[historyIndex])
+      if (historyIndex < commandHistory.length - 1) {
+        setValue(commandHistory[historyIndex + 1])
         setHistoryIndex(historyIndex + 1)
+      }
+      if (historyIndex === commandHistory.length - 1) {
+        setValue("")
       }
     }
     if (e.key === "Enter") {
+      setCommandHistory((commandHistory) => [...commandHistory, e.target.value])
+      setHistoryIndex(commandHistory.length)
       setValue("")
       const command = e.target.value.toLowerCase()
       if (command === "help") {
