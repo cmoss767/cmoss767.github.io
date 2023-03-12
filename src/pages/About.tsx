@@ -1,39 +1,45 @@
-import React from "react"
+import Draggable from "react-draggable"
+import { AiOutlineCloseSquare } from "react-icons/ai"
+import { IoIosArrowUp } from "react-icons/io"
+import { Dispatch, SetStateAction } from "react"
 
-export default function About() {
+interface AboutProps {
+  openAbout: boolean
+  setOpenAbout: Dispatch<SetStateAction<boolean>>
+}
+
+const About = ({ openAbout, setOpenAbout }: AboutProps) => {
   return (
-    <section id="about">
-      <div className="container mx-auto flex px-10 py-20 md:flex-row flex-col items-center">
-        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-          <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
-            Hi, I'm Chris.
-            <br className="hidden lg:inline-block" />I love to build amazing
-            apps.
-          </h1>
+    <>
+      {openAbout && (
+        <div className="container absolute ">
+          <Draggable handle="strong" positionOffset={{ x: "20%", y: "30%" }}>
+            <div className="box no-cursor bg-[#ffc9c9] h-auto w-96 px-2 pb-2">
+              <div className="flex flex-row mb-1 pt-1">
+                <button onClick={() => setOpenAbout(false)}>
+                  <AiOutlineCloseSquare />
+                </button>
 
-          <div className="flex justify-center">
-            <a
-              href="#contact"
-              className="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
-            >
-              Work With Me
-            </a>
-            <a
-              href="#projects"
-              className="ml-4 inline-flex text-gray-400 bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-700 hover:text-white rounded text-lg"
-            >
-              See My Past Work
-            </a>
-          </div>
+                <strong className="cursor ml-2 w-2/3 border-b-2 border-t-2 mb-0.5 mt-2 h-2 border-black"></strong>
+                <h2 className="text-s ml-5">About Me</h2>
+              </div>
+              <div className="bg-[#f9efe4] h-80 w-full border-2 border-black p-2">
+                I'm Chris Moss, a software developer with a background in
+                vaccine research. I've coded on and off since 2018 but I finally
+                decided to take the plunge into programming as a career in 2022.
+                I currently work at Code and Trust and I love learning about new
+                technologies and building out cool projects.
+                <br />
+                <br />
+                In my free time I enjoy hiking, cycling, cooking, and playing
+                tennis.
+              </div>
+            </div>
+          </Draggable>
         </div>
-        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-          <img
-            className="object-cover object-center rounded"
-            alt="hero"
-            src="./coding.svg"
-          />
-        </div>
-      </div>
-    </section>
+      )}
+    </>
   )
 }
+
+export default About

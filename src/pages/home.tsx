@@ -4,6 +4,7 @@ import MainWindow from "./mainWindow"
 
 import * as React from "react"
 import { ColorModeContext } from "../router"
+import DesktopFiles from "./DesktopFiles"
 
 const Home = () => {
   const colorMode = React.useContext(ColorModeContext)
@@ -12,6 +13,7 @@ const Home = () => {
     <main className=" bg-[#6261a1] body-font min-h-screen">
       <Navbar />
       <MainWindow />
+      <DesktopFiles />
     </main>
   )
 }
