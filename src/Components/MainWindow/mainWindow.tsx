@@ -9,11 +9,11 @@ import {
 import { IoIosArrowUp } from "react-icons/io"
 import { FaSkiing } from "react-icons/fa"
 import { useState, useEffect } from "react"
-import About from "./About"
-import Skills from "./Skills"
-import Projects from "./Projects"
+import About from "../Windows/About"
+import Skills from "../Windows/Skills"
+import Projects from "../Windows/Projects"
 import { TiMessageTyping } from "react-icons/ti"
-import Dots from "./Dots/Dots"
+import Dots from "../Dots/Dots"
 import Terminal from "./Terminal"
 
 const MainWindow = () => {
