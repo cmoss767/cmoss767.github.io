@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Dispatch, SetStateAction } from "react"
 
 interface TerminalProps {
@@ -33,7 +33,8 @@ const Terminal = ({ setTerminal, terminal }: TerminalProps) => {
     if (e.key === "Enter") {
       setCommandHistory((commandHistory) => [...commandHistory, e.target.value])
       setHistoryIndex(commandHistory.length)
-      setValue("")
+      console.log(currentDirectory)
+
       const command = e.target.value.toLowerCase()
       if (command === "help") {
         setTerminal((terminal) => [
@@ -46,27 +47,52 @@ const Terminal = ({ setTerminal, terminal }: TerminalProps) => {
           "help ",
           "clear",
         ])
-      }
-      if (command === "clear") {
+      } else if (command === "clear") {
         setTerminal([])
-      }
-      if (command === "ls") {
+      } else if (command === "ls") {
         if (currentDirectory === "root") {
           setTerminal((terminal) => [
             ...terminal,
             "About_Me  Skills  Projects  Blog  Email  Desktop",
           ])
+        } else if (currentDirectory === "desktop") {
+          setTerminal((terminal) => [...terminal, "Resume"])
         }
+      } else if (command === "cd desktop") {
+        setCurrentDirectory("desktop")
+      } else if (
+        command === "cd ~" ||
+        command === "cd root" ||
+        (currentDirectory === "desktop" && command === "cd ..")
+      ) {
+        setCurrentDirectory("root")
+      } else {
+        setTerminal((terminal) => [
+          ...terminal,
+          `command not found: ${e.target.value}`,
+        ])
       }
+
+      setValue("")
     }
   }
   const handleInputValueChange = (e: any) => {
     setValue(e.target.value)
   }
+  const terminalRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollIntoView({
+        block: "nearest",
+        inline: "center",
+      })
+    }
+  }, [terminal])
 
   return (
-    <div className="flex row">
-      <span>Type Command Here:</span>
+    <div ref={terminalRef} className="flex row">
+      <span>Type Command:</span>
       <input
         className="bg-[#f9efe4] focus:outline-none ml-1"
         type="text"
