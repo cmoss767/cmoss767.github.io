@@ -1,7 +1,8 @@
 import Draggable from "react-draggable"
 import { AiOutlineCloseSquare, AiFillFolder } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
+import Pokedex from "./Pokedex"
 
 interface ProjectsProps {
   openProjects: boolean
@@ -9,6 +10,7 @@ interface ProjectsProps {
 }
 
 const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
+  const [openPokedex, setOpenPokedex] = useState(false)
   return (
     <>
       {openProjects && (
@@ -36,7 +38,10 @@ const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
                   <AiFillFolder className="text-5xl  mx-auto my-0" />
                   <span className="text-xs mb-2 ">Algo Visualizer</span>
                 </button>
-                <button className="  text-center w-24 h-24 items-center">
+                <button
+                  className="  text-center w-24 h-24 items-center"
+                  onClick={() => setOpenPokedex(true)}
+                >
                   <AiFillFolder className="text-5xl  mx-auto my-0" />
                   <span className="text-xs mb-2 ">Pokédex</span>
                 </button>
@@ -45,6 +50,7 @@ const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
           </Draggable>
         </div>
       )}
+      <Pokedex openPokedex={openPokedex} setOpenPokedex={setOpenPokedex} />
     </>
   )
 }
