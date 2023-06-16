@@ -15,6 +15,7 @@ import Projects from "../Windows/Projects"
 import { TiMessageTyping } from "react-icons/ti"
 import Dots from "../Dots/Dots"
 import Terminal from "./Terminal"
+import Pdf from "../../Resources/chrisMossResume.pdf"
 
 const MainWindow = () => {
   const [openAbout, setOpenAbout] = useState(false)
@@ -149,10 +150,15 @@ const MainWindow = () => {
                 <TiMessageTyping className="text-3xl mx-auto mt-2.5" />
                 <div className="mt-4 text-xs text-center">Blog</div>
               </div>
-              <div className="border-2 border-l-0 border-black h-20 w-24">
-                <AiOutlineMail className="text-3xl mx-auto mt-2.5" />
-                <div className="mt-4 text-xs text-center">Email</div>
-              </div>
+              <a
+                href={Pdf}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="border-2 border-l-0 border-black h-20 w-24"
+              >
+                <AiOutlineFileText className="text-3xl mx-auto mt-2.5" />
+                <div className="mt-4 text-xs text-center">Resume</div>
+              </a>
             </div>
           </div>
         </Draggable>
