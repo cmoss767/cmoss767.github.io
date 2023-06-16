@@ -3,6 +3,7 @@ import { AiOutlineCloseSquare, AiFillFolder } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io"
 import { Dispatch, SetStateAction, useState } from "react"
 import Pokedex from "./Pokedex"
+import TextToHtml from "./TextToHtml"
 
 interface ProjectsProps {
   openProjects: boolean
@@ -11,6 +12,7 @@ interface ProjectsProps {
 
 const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
   const [openPokedex, setOpenPokedex] = useState(false)
+  const [openTextToHtml, setOpenTextToHtml] = useState(false)
   return (
     <>
       {openProjects && (
@@ -30,7 +32,10 @@ const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
                   <AiFillFolder className="text-5xl  mx-auto my-0" />
                   <span className="text-xs mb-2 ">Recipe Index</span>
                 </button>
-                <button className="  text-center w-24 h-24 items-center">
+                <button
+                  className="  text-center w-24 h-24 items-center"
+                  onClick={() => setOpenTextToHtml(true)}
+                >
                   <AiFillFolder className="text-5xl  mx-auto my-0" />
                   <span className="text-xs mb-2 ">Text to Html</span>
                 </button>
@@ -51,6 +56,10 @@ const Projects = ({ openProjects, setOpenProjects }: ProjectsProps) => {
         </div>
       )}
       <Pokedex openPokedex={openPokedex} setOpenPokedex={setOpenPokedex} />
+      <TextToHtml
+        openTextToHtml={openTextToHtml}
+        setOpenTextToHtml={setOpenTextToHtml}
+      />
     </>
   )
 }
