@@ -13,7 +13,7 @@ const Pokedex = ({ openPokedex, setOpenPokedex }: AboutProps) => {
   return (
     <>
       {openPokedex && (
-        <div className="container absolute left-1/2 top-1/2">
+        <div className="container absolute left-1/2 top-1/2 z-10">
           <Draggable handle="strong" positionOffset={{ x: "20%", y: "30%" }}>
             <div className="box no-cursor bg-[#ffc9c9] h-auto w-96 px-2 pb-2">
               <div className="flex flex-row mb-1 pt-1">

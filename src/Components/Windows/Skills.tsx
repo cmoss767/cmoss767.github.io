@@ -12,7 +12,7 @@ const Skills = ({ openSkills, setOpenSkills }: SkillsProps) => {
   return (
     <>
       {openSkills && (
-        <div className="container absolute ">
+        <div className="container absolute z-10 ">
           <Draggable handle="strong" positionOffset={{ x: "80%", y: "10%" }}>
             <div className="box no-cursor bg-[#ffc9c9] h-auto w-96 px-2 pb-2">
               <div className="flex flex-row mb-1 pt-1">
