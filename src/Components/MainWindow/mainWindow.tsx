@@ -23,6 +23,7 @@ const MainWindow = () => {
   const [openProjects, setOpenProjects] = useState(false)
   const [terminal, setTerminal] = useState<string[]>([])
 
+  console.log(openSkills)
   const [showDots, setShowDots] = useState<{
     dots1: boolean
     dots2: boolean
@@ -133,7 +134,10 @@ const MainWindow = () => {
                 <div className="mt-4 text-xs text-center">About Me</div>
               </button>
               <button
-                onClick={() => setOpenSkills(true)}
+                onClick={() => {
+                  console.log("hi")
+                  setOpenSkills(true)
+                }}
                 className="border-2 border-l-0 border-black h-20 w-24"
               >
                 <FaSkiing className="text-3xl mx-auto mt-2.5" />
