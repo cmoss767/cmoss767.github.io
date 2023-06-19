@@ -22,6 +22,7 @@ const AudioPlayer = ({ audioSrc }: any) => {
       >
         {isPlaying ? "Pause" : "Play"}
       </button>
+      *work in progress
       <audio ref={audioRef} src={audioSrc} />
     </div>
   )

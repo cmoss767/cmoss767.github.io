@@ -77,7 +77,7 @@ const MainWindow = () => {
     <>
       <div className="container absolute left-1/2 top-1/2 ">
         <Draggable handle="strong" positionOffset={{ x: "-50%", y: "-50%" }}>
-          <div className="box no-cursor bg-[#ffc9c9] h-100 w-96 px-2 pb-2">
+          <div className="box no-cursor bg-[#ffc9c9] h-128 w-100 px-2 pb-2">
             <div className="flex flex-row mb-1.5 pt-1">
               <AiOutlineCloseSquare />
               <IoIosArrowUp className="ml-1" />
@@ -163,6 +163,13 @@ const MainWindow = () => {
                 <AiOutlineFileText className="text-3xl mx-auto mt-2.5" />
                 <div className="mt-4 text-xs text-center">Resume</div>
               </a>
+            </div>
+            <div className="overflow-hidden bg-black shadow-xl  mt-3">
+              <div className="animate-marquee whitespace-nowrap text-white text-2xl">
+                BREAKING: Chris's cat, Mint, catches a beetle roaming around the
+                apartment. She was rewarded with a cat treat and some extra pets
+                from her owners.
+              </div>
             </div>
           </div>
         </Draggable>

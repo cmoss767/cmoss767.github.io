@@ -12,5 +12,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 15s linear infinite; /* Adjust the animation duration as needed */
+  animation: marquee 25s linear infinite; /* Adjust the animation duration as needed */
+  animation-delay: -2s; /* Adjust the delay as needed */
+  width: max-content;
 }

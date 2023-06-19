@@ -31,7 +31,6 @@ const Home = (props: any) => {
   }, [vantaEffect])
   return (
     <div ref={myRef} className=" bg-[#6261a1] body-font min-h-screen">
-      <Navbar />
       <MainWindow />
       <DesktopFiles />
     </div>
