@@ -3,9 +3,6 @@ import MainWindow from "./Components/MainWindow/mainWindow"
 import React, { useState, useEffect, useRef } from "react"
 import BIRDS from "vanta/dist/vanta.fog.min"
 
-import DesktopFiles from "./Components/DesktopFiles"
-//
-
 const Home = (props: any) => {
   const [vantaEffect, setVantaEffect] = useState<any>(null)
   const myRef = useRef(null)
@@ -32,7 +29,6 @@ const Home = (props: any) => {
   return (
     <div ref={myRef} className=" bg-[#6261a1] body-font min-h-screen">
       <MainWindow />
-      <DesktopFiles />
     </div>
   )
 }

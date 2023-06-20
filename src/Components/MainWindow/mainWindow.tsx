@@ -7,6 +7,7 @@ import {
   AiOutlineTool,
 } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io"
+import { FiRadio } from "react-icons/fi"
 import { FaSkiing } from "react-icons/fa"
 import { useState, useEffect } from "react"
 import About from "../Windows/About"
@@ -16,12 +17,15 @@ import { TiMessageTyping } from "react-icons/ti"
 import Dots from "../Dots/Dots"
 import Terminal from "./Terminal"
 import Pdf from "../../Resources/chrisMossResume.pdf"
+import Radio from "../Radio"
+import GhostrifterOfficialCityLights from "../../Resources/Ghostrifter-Official-City-Lights.mp3"
 
 const MainWindow = () => {
   const [openAbout, setOpenAbout] = useState(false)
   const [openSkills, setOpenSkills] = useState(false)
   const [openProjects, setOpenProjects] = useState(false)
   const [terminal, setTerminal] = useState<string[]>([])
+  const [openRadio, setOpenRadio] = useState(false)
 
   console.log(openSkills)
   const [showDots, setShowDots] = useState<{
@@ -75,7 +79,7 @@ const MainWindow = () => {
 
   return (
     <>
-      <div className="container absolute left-1/2 top-1/2 ">
+      <div className="container absolute left-1/2 top-1/2 z-10">
         <Draggable handle="strong" positionOffset={{ x: "-50%", y: "-50%" }}>
           <div className="box no-cursor bg-[#ffc9c9] h-128 w-100 px-2 pb-2">
             <div className="flex flex-row mb-1.5 pt-1">
@@ -83,7 +87,7 @@ const MainWindow = () => {
               <IoIosArrowUp className="ml-1" />
               <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black"></strong>
             </div>
-            <div className="bg-[#f9efe4] h-80 w-full border-2 border-black p-2 overflow-auto">
+            <div className="bg-[#f9efe4] h-88 w-full border-2 border-black p-2 overflow-auto">
               {showText.text1 && (
                 <div className="flex row">
                   <span className="mr-1">Installing CoolFactor.exe</span>
@@ -150,10 +154,13 @@ const MainWindow = () => {
                 <AiOutlineTool className="text-3xl mx-auto mt-2.5" />
                 <div className="mt-4 text-xs text-center">Projects</div>
               </button>
-              <div className="border-2 border-l-0 border-black h-20 w-24">
-                <TiMessageTyping className="text-3xl mx-auto mt-2.5" />
-                <div className="mt-4 text-xs text-center">Blog</div>
-              </div>
+              <button
+                className="border-2 border-l-0 border-black h-20 w-24"
+                onClick={() => setOpenRadio(true)}
+              >
+                <FiRadio className="text-3xl mx-auto mt-2.5" />
+                <div className="mt-4 text-xs text-center">Radio</div>
+              </button>
               <a
                 href={Pdf}
                 rel="noopener noreferrer"
@@ -164,7 +171,7 @@ const MainWindow = () => {
                 <div className="mt-4 text-xs text-center">Resume</div>
               </a>
             </div>
-            <div className="overflow-hidden bg-black shadow-xl  mt-3">
+            <div className="overflow-hidden bg-black shadow-xl  mt-2">
               <div className="animate-marquee whitespace-nowrap text-white text-2xl">
                 BREAKING: Chris's cat, Mint, catches a beetle roaming around the
                 apartment. She was rewarded with a cat treat and some extra pets
@@ -177,6 +184,11 @@ const MainWindow = () => {
       <About openAbout={openAbout} setOpenAbout={setOpenAbout} />
       <Skills openSkills={openSkills} setOpenSkills={setOpenSkills} />
       <Projects openProjects={openProjects} setOpenProjects={setOpenProjects} />
+      <Radio
+        openRadio={openRadio}
+        setOpenRadio={setOpenRadio}
+        audioSrc={GhostrifterOfficialCityLights}
+      />
     </>
   )
 }
