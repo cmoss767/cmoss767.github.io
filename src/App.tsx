@@ -1,4 +1,3 @@
-import Navbar from "./Components/Navbar"
 import MainWindow from "./Components/MainWindow/mainWindow"
 import React, { useState, useEffect, useRef } from "react"
 import BIRDS from "vanta/dist/vanta.fog.min"
