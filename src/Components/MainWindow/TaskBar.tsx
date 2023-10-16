@@ -8,12 +8,10 @@ import { FaSkiing } from "react-icons/fa"
 import Pdf from "../../Resources/chrisMossResume.pdf"
 import { Dispatch, SetStateAction } from "react"
 import { TABS } from "./mainWindow"
+import { useWindowContext } from "../../Context/WindowContext"
 
-interface TaskBarProps {
-  setTabs: Dispatch<SetStateAction<TABS>>
-}
-
-const TaskBar = ({ setTabs }: TaskBarProps) => {
+const TaskBar = () => {
+  const { setTabs } = useWindowContext()
   return (
     <div className="flex flex-row mt-2">
       <button

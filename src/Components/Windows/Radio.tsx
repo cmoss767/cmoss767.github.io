@@ -4,12 +4,9 @@ import { AiOutlineCloseSquare } from "react-icons/ai"
 import { Dispatch, SetStateAction } from "react"
 import { TABS } from "../MainWindow/mainWindow"
 import GhostrifterOfficialCityLights from "../../Resources/Ghostrifter-Official-City-Lights.mp3"
+import TabWrapper from "../TabWrapper"
 
-interface AudioPlayerProps {
-  setTabs: Dispatch<SetStateAction<TABS>>
-}
-
-const AudioPlayer = ({ setTabs }: AudioPlayerProps) => {
+const AudioPlayer = () => {
   const [isPlaying, setPlaying] = useState(false)
   const audioRef = useRef<any>(null)
 
@@ -25,29 +22,19 @@ const AudioPlayer = ({ setTabs }: AudioPlayerProps) => {
   return (
     <>
       <div>
-        <div className="box no-cursor bg-[#ffc9c9] h-auto w-96 px-2 pb-2">
-          <div className="flex flex-row mb-1 pt-1">
-            <button onClick={() => setTabs(TABS.HOME)}>
-              <AiOutlineCloseSquare />
+        <TabWrapper>
+          <div className=" w-full p-4 ml-24 ">
+            <div className="w-24 h-24 bg-[blue] mx-0"></div>
+            <button
+              className="bg-[#ffc9c9] p-2 rounded-full mx-0"
+              onClick={togglePlay}
+            >
+              {isPlaying ? "Pause" : "Play"}
             </button>
-
-            <strong className="cursor ml-2 w-2/3 border-b-2 border-t-2 mb-0.5 mt-2 h-2 border-black"></strong>
-            <h2 className="text-s ml-5">Radio</h2>
+            *work in progress
+            <audio ref={audioRef} src={GhostrifterOfficialCityLights} />
           </div>
-          <div>
-            <div className=" w-full p-4 ml-24 ">
-              <div className="w-24 h-24 bg-[blue] mx-0"></div>
-              <button
-                className="bg-[#ffc9c9] p-2 rounded-full mx-0"
-                onClick={togglePlay}
-              >
-                {isPlaying ? "Pause" : "Play"}
-              </button>
-              *work in progress
-              <audio ref={audioRef} src={GhostrifterOfficialCityLights} />
-            </div>
-          </div>
-        </div>
+        </TabWrapper>
       </div>
     </>
   )

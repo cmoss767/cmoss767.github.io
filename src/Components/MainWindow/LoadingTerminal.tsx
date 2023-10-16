@@ -1,15 +1,11 @@
 import { useState } from "react"
 import Dots from "../Dots/Dots"
 import Terminal from "./Terminal"
-import { ShowTextType } from "./mainWindow"
-import { ShowDotsType } from "./mainWindow"
+import { useWindowContext } from "../../Context/WindowContext"
 
-interface LoadingTerminalProps {
-  showText: ShowTextType
-  showDots: ShowDotsType
-}
-const LoadingTerminal = ({ showText, showDots }: LoadingTerminalProps) => {
+const LoadingTerminal = () => {
   const [terminal, setTerminal] = useState<string[]>([])
+  const { showDots, showText } = useWindowContext()
   return (
     <div className="bg-[#f9efe4] h-88 w-full border-2 border-black p-2 overflow-auto">
       {showText.text1 && (

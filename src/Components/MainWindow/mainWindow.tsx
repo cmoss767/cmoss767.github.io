@@ -1,12 +1,13 @@
 import Draggable from "react-draggable"
 import { AiOutlineCloseSquare } from "react-icons/ai"
 import { IoIosArrowUp } from "react-icons/io"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import About from "../Windows/About"
 import Skills from "../Windows/Skills"
 import Projects from "../Windows/Projects/Projects"
 import LoadingTerminal from "./LoadingTerminal"
 import NewsFooter from "../NewsFooter"
+import { useWindowContext } from "../../Context/WindowContext"
 
 import Radio from "../Windows/Radio"
 import TaskBar from "./TaskBar"
@@ -33,25 +34,8 @@ export interface ShowDotsType {
 }
 
 const MainWindow = () => {
-  const [showDots, setShowDots] = useState<{
-    dots1: boolean
-    dots2: boolean
-    dots3: boolean
-  }>({ dots1: true, dots2: false, dots3: false })
-  const [showText, setShowText] = useState<{
-    text1: boolean
-    text2: boolean
-    text3: boolean
-    greetingText: boolean
-    terminal: boolean
-  }>({
-    text1: true,
-    text2: false,
-    text3: false,
-    greetingText: false,
-    terminal: false,
-  })
-  const [tabs, setTabs] = useState(TABS.HOME)
+  const { showDots, setShowDots, showText, setShowText, tabs } =
+    useWindowContext()
 
   useEffect(() => {
     if (showDots?.dots1 || showDots?.dots2 || showDots?.dots3) {
@@ -93,15 +77,13 @@ const MainWindow = () => {
               <IoIosArrowUp className="ml-1" />
               <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black" />
             </div>
-            {tabs === TABS.HOME && (
-              <LoadingTerminal showText={showText} showDots={showDots} />
-            )}
-            {tabs === TABS.ABOUT && <About setTabs={setTabs} />}
-            {tabs === TABS.PROJECTS && <Projects setTabs={setTabs} />}
-            {tabs === TABS.SKILLS && <Skills setTabs={setTabs} />}
-            {tabs === TABS.RADIO && <Radio setTabs={setTabs} />}
+            {tabs === TABS.HOME && <LoadingTerminal />}
+            {tabs === TABS.ABOUT && <About />}
+            {tabs === TABS.PROJECTS && <Projects />}
+            {tabs === TABS.SKILLS && <Skills />}
+            {tabs === TABS.RADIO && <Radio />}
 
-            <TaskBar setTabs={setTabs} />
+            <TaskBar />
             <NewsFooter />
           </div>
         </Draggable>
