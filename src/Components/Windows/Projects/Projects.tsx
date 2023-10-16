@@ -3,7 +3,6 @@ import { AiFillFolder } from "react-icons/ai"
 import { useState } from "react"
 import Pokedex from "./Pokedex"
 import TextToHtml from "./TextToHtml"
-import { TABS } from "../../MainWindow/mainWindow"
 
 import TabWrapper from "../../../Components/TabWrapper"
 

@@ -1,8 +1,4 @@
 import { useRef, useState } from "react"
-import Draggable from "react-draggable"
-import { AiOutlineCloseSquare } from "react-icons/ai"
-import { Dispatch, SetStateAction } from "react"
-import { TABS } from "../MainWindow/mainWindow"
 import GhostrifterOfficialCityLights from "../../Resources/Ghostrifter-Official-City-Lights.mp3"
 import TabWrapper from "../TabWrapper"
 
