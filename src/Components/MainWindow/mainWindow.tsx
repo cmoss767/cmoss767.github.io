@@ -13,12 +13,19 @@ import { useState, useEffect } from "react"
 import About from "../Windows/About"
 import Skills from "../Windows/Skills"
 import Projects from "../Windows/Projects/Projects"
-import { TiMessageTyping } from "react-icons/ti"
 import Dots from "../Dots/Dots"
 import Terminal from "./Terminal"
 import Pdf from "../../Resources/chrisMossResume.pdf"
 import Radio from "../Radio"
 import GhostrifterOfficialCityLights from "../../Resources/Ghostrifter-Official-City-Lights.mp3"
+
+export enum TABS {
+  HOME = "HOME",
+  ABOUT = "ABOUT",
+  SKILLS = "SKILLS",
+  PROJECTS = "PROJECTS",
+  RADIO = "RADIO",
+}
 
 const MainWindow = () => {
   const [openAbout, setOpenAbout] = useState(false)
@@ -46,6 +53,7 @@ const MainWindow = () => {
     greetingText: false,
     terminal: false,
   })
+  const [tabs, setTabs] = useState(TABS.HOME)
 
   useEffect(() => {
     if (showDots?.dots1 || showDots?.dots2 || showDots?.dots3) {
@@ -87,60 +95,73 @@ const MainWindow = () => {
               <IoIosArrowUp className="ml-1" />
               <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black"></strong>
             </div>
-            <div className="bg-[#f9efe4] h-88 w-full border-2 border-black p-2 overflow-auto">
-              {showText.text1 && (
-                <div className="flex row">
-                  <span className="mr-1">Installing CoolFactor.exe</span>
-                  {showDots?.dots1 && <Dots />}
-                </div>
-              )}
-              {showText.text2 && (
-                <div className="flex row">
-                  <span className="mr-1">Building Life Experience</span>
-                  {showDots?.dots2 && <Dots />}
-                </div>
-              )}
-              {showText.text3 && (
-                <div className="flex row">
-                  <span className="mr-1">Rendering Professional Mode</span>
-                  {showDots?.dots3 && <Dots />}
-                </div>
-              )}
-              {showText.greetingText && (
-                <div className="text-center">
-                  <h2 className="text-3xl">Hi there, I'm Chris. 👋 </h2>
-                  <span className="text-xl">Welcome to my Site</span>
-                </div>
-              )}
-              {showText.terminal && (
-                <>
-                  <div className="mt-2">
-                    <span className="text-lg">Need Help?</span>
-                    <br />
-                    <span className="text-sm">
-                      Type help in the command line to see available options
-                    </span>
+            {tabs === TABS.HOME && (
+              <div className="bg-[#f9efe4] h-88 w-full border-2 border-black p-2 overflow-auto">
+                {showText.text1 && (
+                  <div className="flex row">
+                    <span className="mr-1">Installing CoolFactor.exe</span>
+                    {showDots?.dots1 && <Dots />}
                   </div>
-                  {terminal.map((line: string) => (
-                    <div>{line}</div>
-                  ))}
-                  <Terminal terminal={terminal} setTerminal={setTerminal} />
-                </>
-              )}
-            </div>
+                )}
+                {showText.text2 && (
+                  <div className="flex row">
+                    <span className="mr-1">Building Life Experience</span>
+                    {showDots?.dots2 && <Dots />}
+                  </div>
+                )}
+                {showText.text3 && (
+                  <div className="flex row">
+                    <span className="mr-1">Rendering Professional Mode</span>
+                    {showDots?.dots3 && <Dots />}
+                  </div>
+                )}
+                {showText.greetingText && (
+                  <div className="text-center">
+                    <h2 className="text-3xl">Hi there, I'm Chris. 👋 </h2>
+                    <span className="text-xl">Welcome to my Site</span>
+                  </div>
+                )}
+                {showText.terminal && (
+                  <>
+                    <div className="mt-2">
+                      <span className="text-lg">Need Help?</span>
+                      <br />
+                      <span className="text-sm">
+                        Type help in the command line to see available options
+                      </span>
+                    </div>
+                    {terminal.map((line: string) => (
+                      <div>{line}</div>
+                    ))}
+                    <Terminal terminal={terminal} setTerminal={setTerminal} />
+                  </>
+                )}
+              </div>
+            )}
+            {tabs === TABS.ABOUT && <About setTabs={setTabs} />}
+            {tabs === TABS.PROJECTS && <Projects setTabs={setTabs} />}
+            {tabs === TABS.SKILLS && (
+              <Skills openSkills={openSkills} setOpenSkills={setOpenSkills} />
+            )}
+            {tabs === TABS.RADIO && (
+              <Radio
+                openRadio={openRadio}
+                setOpenRadio={setOpenRadio}
+                audioSrc={GhostrifterOfficialCityLights}
+              />
+            )}
 
             <div className="flex flex-row mt-2">
               <button
                 className="border-2  border-black h-20 w-24"
-                onClick={() => setOpenAbout(true)}
+                onClick={() => setTabs(TABS.ABOUT)}
               >
                 <AiOutlineSmile className="text-3xl mx-auto mt-2.5" />
                 <div className="mt-4 text-xs text-center">About Me</div>
               </button>
               <button
                 onClick={() => {
-                  console.log("hi")
-                  setOpenSkills(true)
+                  setTabs(TABS.SKILLS)
                 }}
                 className="border-2 border-l-0 border-black h-20 w-24"
               >
@@ -148,7 +169,7 @@ const MainWindow = () => {
                 <div className="mt-4 text-xs text-center">Skills</div>
               </button>
               <button
-                onClick={() => setOpenProjects(true)}
+                onClick={() => setTabs(TABS.PROJECTS)}
                 className="border-2 border-l-0 border-black h-20 w-24"
               >
                 <AiOutlineTool className="text-3xl mx-auto mt-2.5" />
@@ -156,7 +177,7 @@ const MainWindow = () => {
               </button>
               <button
                 className="border-2 border-l-0 border-black h-20 w-24"
-                onClick={() => setOpenRadio(true)}
+                onClick={() => setTabs(TABS.RADIO)}
               >
                 <FiRadio className="text-3xl mx-auto mt-2.5" />
                 <div className="mt-4 text-xs text-center">Radio</div>
@@ -181,14 +202,6 @@ const MainWindow = () => {
           </div>
         </Draggable>
       </div>
-      <About openAbout={openAbout} setOpenAbout={setOpenAbout} />
-      <Skills openSkills={openSkills} setOpenSkills={setOpenSkills} />
-      <Projects openProjects={openProjects} setOpenProjects={setOpenProjects} />
-      <Radio
-        openRadio={openRadio}
-        setOpenRadio={setOpenRadio}
-        audioSrc={GhostrifterOfficialCityLights}
-      />
     </>
   )
 }
