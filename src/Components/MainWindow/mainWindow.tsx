@@ -9,7 +9,7 @@ import LoadingTerminal from "./LoadingTerminal"
 import NewsFooter from "../NewsFooter"
 import { useWindowContext } from "../../Context/WindowContext"
 
-import Radio from "../Windows/Radio"
+import Radio from "../Windows/Radio/Radio"
 import TaskBar from "./TaskBar"
 
 export enum TABS {

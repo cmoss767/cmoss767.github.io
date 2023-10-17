@@ -13,6 +13,7 @@ const Projects = () => {
     <>
       <div>
         <TabWrapper>
+          <h2 className="text-center font-semibold text-lg ">Projects</h2>
           <button className="  text-center w-24 h-24 items-center">
             <AiFillFolder className="text-5xl  mx-auto my-0" />
             <span className="text-xs mb-2 ">Recipe Index</span>

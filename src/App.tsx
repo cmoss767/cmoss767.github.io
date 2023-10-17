@@ -3,7 +3,7 @@ import { WindowProvider } from "./Context/WindowContext"
 
 const Home = () => {
   return (
-    <div className=" bg-[#6261a1]/80 body-font min-h-screen">
+    <div className=" bg-[#6261a1] body-font min-h-screen">
       <WindowProvider>
         <MainWindow />
       </WindowProvider>

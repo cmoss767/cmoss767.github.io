@@ -19,14 +19,6 @@ const TabWrapper = ({ children }: TabWrapperProps) => {
         >
           Back
         </button>
-        <button
-          className="bg-[#ffc9c9] hover:bg-[#ffc9c9]/80 text-black py-2 px-4 rounded-md"
-          onClick={() => {
-            setTabs(TABS.HOME)
-          }}
-        >
-          Foward
-        </button>
       </div>
       {children}
     </div>
