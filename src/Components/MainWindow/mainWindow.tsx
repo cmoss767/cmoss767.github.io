@@ -35,6 +35,22 @@ export interface ShowDotsType {
   dots3: boolean
 }
 
+/**
+ * MainWindow Component
+ * 
+ * The primary container for the application. Handles:
+ * - Desktop/Mobile responsive layout
+ * - Draggable window functionality (desktop only)
+ * - Tab content rendering
+ * - Loading animation sequence
+ * 
+ * Structure:
+ * - Pink outer container (non-scrollable)
+ *   - Window title bar with drag handle
+ *   - Content area (white container inside TabWrapper)
+ *   - TaskBar
+ *   - NewsFooter
+ */
 const MainWindow = () => {
   const { showDots, setShowDots, showText, setShowText, tabs } =
     useWindowContext()
@@ -72,16 +88,18 @@ const MainWindow = () => {
   return (
     <>
       <div className="container fixed inset-0 md:flex md:items-center md:justify-center z-10">
-        <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[650px]">
+        <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[500px] md:max-h-[80vh]">
           <Draggable handle="strong" disabled={window.innerWidth < 768}>
             <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2">
+              {/* Window Title Bar */}
               <div className="flex flex-row mb-1.5 pt-1">
                 <AiOutlineCloseSquare className="text-3xl" />
                 <IoIosArrowUp className="ml-1 text-3xl" />
                 <strong className="cursor ml-2 flex-grow border-b-3 border-t-3 mb-0.5 mt-1 h-4 border-black" />
               </div>
               
-              <div className="flex-grow overflow-auto">
+              {/* Main Content Area */}
+              <div >
                 {tabs === TABS.HOME && <LoadingTerminal />}
                 {tabs === TABS.ABOUT && <About />}
                 {tabs === TABS.PROJECTS && <Projects />}
@@ -90,6 +108,7 @@ const MainWindow = () => {
                 {tabs === TABS.RESUME && <Resume />}
               </div>
 
+              {/* Footer Elements */}
               <div className="mt-auto">
                 <TaskBar />
                 <NewsFooter />

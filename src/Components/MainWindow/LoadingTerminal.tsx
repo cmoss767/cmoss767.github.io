@@ -7,7 +7,7 @@ const LoadingTerminal = () => {
   const [terminal, setTerminal] = useState<string[]>([])
   const { showDots, showText } = useWindowContext()
   return (
-    <div className="bg-[#f9efe4] h-[calc(100vh-180px)] md:h-[530px] w-full border-3 border-black p-2 overflow-auto">
+    <div className="bg-[#f9efe4] h-[calc(100vh-180px)] md:h-[400px] w-full border-3 border-black p-2 ">
       {showText.text1 && (
         <div className="flex row">
           <span className="mr-1 text-lg md:text-xl">Installing CoolFactor.exe</span>
