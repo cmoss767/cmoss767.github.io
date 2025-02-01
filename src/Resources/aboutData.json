@@ -1,0 +1,20 @@
+{
+  "title": "About Me",
+  "intro": "Hello! I'm a self-taught full-stack developer with three years of professional experience and six years of coding and scripting experience. I currently live in Houston, TX and have previously lived in Charleston, DC, and Stockholm.",
+  "education": {
+    "text": "I graduated from Clemson University with degrees in Microbiology and Genetics and have a formal background in biomedical research. I am a published author! Check out the work that I contributed to below:",
+    "publications": [
+      {
+        "title": "Microplastics on gut health",
+        "url": "https://link.springer.com/article/10.1007/s10565-021-09616-x"
+      },
+      {
+        "title": "Stress Responses in Parasites",
+        "url": "https://journals.asm.org/doi/full/10.1128/msphere.00131-22"
+      }
+    ]
+  },
+  "passion": "I'm passionate about leveraging technology to create value and foster a positive, driven environment. I'm always looking to improve my skills and build exciting projects.",
+  "personal": "Beyond coding, I try to hit the gym as often as possible and enjoy cooking new meals. I also love exploring new restaurants—Houston definitely isn't a tourist destination, but it has one of the best affordable food scenes I've ever experienced.",
+  "website": "This website is my space to de-stress through code. Production quality code doesn't exist here—It's mainly me experimenting with all the cool things I can do with React and Javascript. Also for anyone who stumbles upon this website it's a place where you can get to know me better!"
+} 
