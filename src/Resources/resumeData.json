@@ -1,0 +1,102 @@
+{
+  "header": {
+    "name": "Chris Moss",
+    "contact": {
+      "phone": "(843) 981-6390",
+      "email": "hcmoss70@gmail.com",
+      "location": "Houston, TX"
+    },
+    "links": [
+      {
+        "type": "LinkedIn",
+        "url": "linkedin.com/in/cmoss767"
+      },
+      {
+        "type": "Portfolio",
+        "url": "cmoss767.github.io"
+      },
+      {
+        "type": "GitHub",
+        "url": "github.com/cmoss767"
+      }
+    ]
+  },
+  "skills": {
+    "technicalLanguages": [
+      "Typescript", "C#", "Python", "Java", "PHP", "SQL", "R", "HTML", "CSS", "Git", "Bash"
+    ],
+    "developmentSkills": [
+      "React.js", "React-Native", "Angular.js", "Node.js", "Express.js", "MongoDB", "MySQL",
+      "PostgreSQL", "Prisma", "Jest", "Cypress", "MUI", "Tailwind", "Docker", "AWS", "Azure",
+      "Terraform", "Redis", ".NET", "Blazor"
+    ]
+  },
+  "experience": [
+    {
+      "company": "Next Level Medical",
+      "position": "Software Engineer",
+      "location": "Houston, TX",
+      "period": "January 2024 - Present",
+      "achievements": [
+        "Lead full stack development of a C# .NET web app and a Node, React, and Typescript PWA",
+        "Optimized Azure Services to handle thousands of users a day and reduce costs by 50%",
+        "Implemented caching service and database query optimization to reduce app loading time from 20s to 5s",
+        "Built automated pipeline in python to email supervisors monthly reports of feature impact",
+        "Maintained HIPAA-compliant logging service resulting in a 60% decrease in Helpdesk reports"
+      ]
+    },
+    {
+      "company": "Code /+/ Trust",
+      "position": "Full Stack Software Developer",
+      "location": "Charleston, SC",
+      "period": "August 2022 - January 2024",
+      "achievements": [
+        "Optimized database queries to perform faster by an upper bound of 1000%",
+        "Led migration of Javascript, Angular, PHP, SQL stack to React, Typescript, Node, and Prisma to better coordinate feature development and maintenance of event management software",
+        "Developed admin web app using Node, React, Typescript and AWS allowing employees to make generative AI social media posts, increasing user engagement upwards of 150%",
+        "Oversaw team of junior developers to deliver a cross platform React Native fitness application to client"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "RingMyBelle",
+      "period": "June, 2023 - October, 2023",
+      "role": "Software Consultant",
+      "location": "Remote",
+      "achievements": [
+        "Spearheaded a legacy React, Javascript, Terraform and AWS codebase migration to Shopify",
+        "Consolidated business costs from teams in India and California, reducing monthly business spend by $750",
+        "Coordinated Google Ad campaigns to increase monthly revenue by $2,100"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Johns Hopkins University / Karolinska Institutet",
+      "degree": "PhD, Computational Immunology",
+      "location": "Stockholm, Sweden",
+      "period": "August 2021 - August 2022",
+      "achievements": [
+        "Established models for developing predictive immunotherapies using R and python",
+        "Honored as the top 25% of research proposals out of 12,000 applicants for the NSF-GRFP"
+      ]
+    },
+    {
+      "school": "Clemson University",
+      "degree": "B.S. Genetics, B.S. Microbiology",
+      "location": "Clemson, SC",
+      "period": "August 2017 - May 2021",
+      "gpa": "3.91",
+      "awards": [
+        "American-Scandinavian Foundation Fellow (2021)",
+        "Astronaut Scholar (2020)"
+      ],
+      "relevantCourses": [
+        "Introduction to Java",
+        "Bioinformatics in Python and R",
+        "Calculus of One Variable"
+      ]
+    }
+  ]
+} 

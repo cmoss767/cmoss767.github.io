@@ -11,6 +11,7 @@ import { useWindowContext } from "../../Context/WindowContext"
 
 import Radio from "../Windows/Radio/Radio"
 import TaskBar from "./TaskBar"
+import Resume from "../Windows/Resume/Resume"
 
 export enum TABS {
   HOME = "HOME",
@@ -18,6 +19,7 @@ export enum TABS {
   SKILLS = "SKILLS",
   PROJECTS = "PROJECTS",
   RADIO = "RADIO",
+  RESUME = "RESUME",
 }
 export interface ShowTextType {
   text1: boolean
@@ -82,6 +84,7 @@ const MainWindow = () => {
             {tabs === TABS.PROJECTS && <Projects />}
             {tabs === TABS.SKILLS && <Skills />}
             {tabs === TABS.RADIO && <Radio />}
+            {tabs === TABS.RESUME && <Resume />}
 
             <TaskBar />
             <NewsFooter />

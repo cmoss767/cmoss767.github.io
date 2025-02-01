@@ -42,15 +42,13 @@ const TaskBar = () => {
         <FiRadio className="text-4xl md:text-5xl" />
         <div className="text-sm md:text-base mt-1">Radio</div>
       </button>
-      <a
-        href={Pdf}
-        rel="noopener noreferrer"
-        target="_blank"
+      <button
         className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
+        onClick={() => setTabs(TABS.RESUME)}
       >
         <AiOutlineFileText className="text-4xl md:text-5xl" />
         <div className="text-sm md:text-base mt-1">Resume</div>
-      </a>
+      </button>
     </div>
   )
 }
