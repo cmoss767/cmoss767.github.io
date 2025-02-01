@@ -69,7 +69,7 @@ const MainWindow = () => {
 
   return (
     <>
-      <div className="container fixed inset-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 w-full md:w-[650px] h-full md:h-[750px] md:max-w-[650px] md:max-h-[750px]">
+      <div className="container fixed inset-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 w-full md:w-[650px] md:h-[750px] md:max-w-[650px] md:max-h-[750px]">
         <Draggable handle="strong" disabled={window.innerWidth < 768}>
           <div className="box no-cursor bg-[#ffc9c9] h-full w-full px-2 pb-2">
             <div className="flex flex-row mb-1.5 pt-1">
