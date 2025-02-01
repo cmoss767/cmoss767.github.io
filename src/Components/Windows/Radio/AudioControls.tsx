@@ -1,5 +1,5 @@
 import { AiOutlinePlayCircle, AiOutlinePauseCircle, AiOutlineStepForward, AiOutlineStepBackward } from 'react-icons/ai'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 interface AudioControlsProps {
   audioRef: React.RefObject<HTMLAudioElement>

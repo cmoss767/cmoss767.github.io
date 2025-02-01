@@ -33,23 +33,41 @@ const useAnimateBars = ({
   let x = 0
   
   for (let i = 0; i < bufferLength; i++) {
-    const barHeight = (dataArray[i] / 255) * (HEIGHT / 2.5) // Reduced height slightly
+    const barHeight = (dataArray[i] / 255) * (HEIGHT / 2.5)
     
-    // Create gradient with our theme colors
     const gradient = canvasCtx.createLinearGradient(0, centerY - barHeight, 0, centerY + barHeight)
-    gradient.addColorStop(0, '#ffc9c9')    // Light pink (top)
-    gradient.addColorStop(0.5, '#ff9999')  // Medium pink (middle)
-    gradient.addColorStop(1, '#ff6666')    // Darker pink (bottom)
+    gradient.addColorStop(0, '#ffc9c9')
+    gradient.addColorStop(0.5, '#ff9999')
+    gradient.addColorStop(1, '#ff6666')
     
     canvasCtx.fillStyle = gradient
     
-    // Round the tops of the bars
-    canvasCtx.beginPath()
-    canvasCtx.roundRect(x, centerY - barHeight, barWidth, barHeight, [3, 3, 0, 0])
-    canvasCtx.roundRect(x, centerY, barWidth, barHeight, [0, 0, 3, 3])
-    canvasCtx.fill()
+    // Draw rounded rectangles without using roundRect
+    const radius = 3;
     
-    x += barWidth + barSpacing
+    // Upper bar
+    canvasCtx.beginPath();
+    canvasCtx.moveTo(x + radius, centerY - barHeight);
+    canvasCtx.lineTo(x + barWidth - radius, centerY - barHeight);
+    canvasCtx.quadraticCurveTo(x + barWidth, centerY - barHeight, x + barWidth, centerY - barHeight + radius);
+    canvasCtx.lineTo(x + barWidth, centerY);
+    canvasCtx.lineTo(x, centerY);
+    canvasCtx.lineTo(x, centerY - barHeight + radius);
+    canvasCtx.quadraticCurveTo(x, centerY - barHeight, x + radius, centerY - barHeight);
+    canvasCtx.fill();
+    
+    // Lower bar
+    canvasCtx.beginPath();
+    canvasCtx.moveTo(x, centerY);
+    canvasCtx.lineTo(x + barWidth, centerY);
+    canvasCtx.lineTo(x + barWidth, centerY + barHeight - radius);
+    canvasCtx.quadraticCurveTo(x + barWidth, centerY + barHeight, x + barWidth - radius, centerY + barHeight);
+    canvasCtx.lineTo(x + radius, centerY + barHeight);
+    canvasCtx.quadraticCurveTo(x, centerY + barHeight, x, centerY + barHeight - radius);
+    canvasCtx.lineTo(x, centerY);
+    canvasCtx.fill();
+    
+    x += barWidth + barSpacing;
   }
 }
 
