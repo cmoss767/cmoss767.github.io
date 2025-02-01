@@ -90,16 +90,16 @@ const MainWindow = () => {
       <div className="container fixed inset-0 md:flex md:items-center md:justify-center z-10">
         <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[500px] md:max-h-[80vh]">
           <Draggable handle="strong" disabled={window.innerWidth < 768}>
-            <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2">
+            <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2 rounded-lg border-3 border-black shadow-xl">
               {/* Window Title Bar */}
-              <div className="flex flex-row mb-1.5 pt-1">
-                <AiOutlineCloseSquare className="text-3xl" />
-                <IoIosArrowUp className="ml-1 text-3xl" />
-                <strong className="cursor ml-2 flex-grow border-b-3 border-t-3 mb-0.5 mt-1 h-4 border-black" />
+              <div className="flex flex-row items-center gap-2 py-2 mb-2">
+                <AiOutlineCloseSquare className="text-3xl hover:opacity-80 transition-opacity" />
+                <IoIosArrowUp className="text-3xl hover:opacity-80 transition-opacity" />
+                <strong className="cursor flex-grow border-y-3 border-black h-4" />
               </div>
               
               {/* Main Content Area */}
-              <div >
+              <div className="flex-grow overflow-hidden">
                 {tabs === TABS.HOME && <LoadingTerminal />}
                 {tabs === TABS.ABOUT && <About />}
                 {tabs === TABS.PROJECTS && <Projects />}
@@ -109,7 +109,7 @@ const MainWindow = () => {
               </div>
 
               {/* Footer Elements */}
-              <div className="mt-auto">
+              <div className="flex-shrink-0">
                 <TaskBar />
                 <NewsFooter />
               </div>
