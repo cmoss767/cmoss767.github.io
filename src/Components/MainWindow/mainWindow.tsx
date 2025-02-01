@@ -69,13 +69,13 @@ const MainWindow = () => {
 
   return (
     <>
-      <div className="container absolute left-1/2 top-1/2 z-10">
-        <Draggable handle="strong" positionOffset={{ x: "-50%", y: "-50%" }}>
-          <div className="box no-cursor bg-[#ffc9c9] h-128 w-100 px-2 pb-2">
+      <div className="container fixed inset-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 w-full md:w-[650px] h-full md:h-[750px]">
+        <Draggable handle="strong" disabled={window.innerWidth < 768}>
+          <div className="box no-cursor bg-[#ffc9c9] h-full w-full px-2 pb-2">
             <div className="flex flex-row mb-1.5 pt-1">
-              <AiOutlineCloseSquare />
-              <IoIosArrowUp className="ml-1" />
-              <strong className="cursor ml-2 w-5/6 border-b-2 border-t-2 mb-0.5 mt-1 h-2 border-black" />
+              <AiOutlineCloseSquare className="text-3xl" />
+              <IoIosArrowUp className="ml-1 text-3xl" />
+              <strong className="cursor ml-2 flex-grow border-b-3 border-t-3 mb-0.5 mt-1 h-4 border-black" />
             </div>
             {tabs === TABS.HOME && <LoadingTerminal />}
             {tabs === TABS.ABOUT && <About />}

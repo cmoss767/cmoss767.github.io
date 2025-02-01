@@ -8,6 +8,9 @@ module.exports = {
         128: "32rem", // 512 pixels
         88: "22rem",
       },
+      borderWidth: {
+        '3': '3px',
+      },
     },
   },
   plugins: [],

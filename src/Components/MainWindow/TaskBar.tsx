@@ -13,45 +13,43 @@ import { useWindowContext } from "../../Context/WindowContext"
 const TaskBar = () => {
   const { setTabs } = useWindowContext()
   return (
-    <div className="flex flex-row mt-2">
+    <div className="flex flex-row mt-2 fixed md:relative bottom-0 md:bottom-auto left-0 w-full bg-[#ffc9c9] md:bg-transparent p-2 md:p-0">
       <button
-        className="border-2  border-black h-20 w-24"
+        className="border-3 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
         onClick={() => setTabs(TABS.ABOUT)}
       >
-        <AiOutlineSmile className="text-3xl mx-auto mt-2.5" />
-        <div className="mt-4 text-xs text-center">About Me</div>
+        <AiOutlineSmile className="text-4xl md:text-5xl" />
+        <div className="text-sm md:text-base mt-1">About Me</div>
       </button>
       <button
-        onClick={() => {
-          setTabs(TABS.SKILLS)
-        }}
-        className="border-2 border-l-0 border-black h-20 w-24"
+        onClick={() => setTabs(TABS.SKILLS)}
+        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
       >
-        <FaSkiing className="text-3xl mx-auto mt-2.5" />
-        <div className="mt-4 text-xs text-center">Skills</div>
+        <FaSkiing className="text-4xl md:text-5xl" />
+        <div className="text-sm md:text-base mt-1">Skills</div>
       </button>
       <button
         onClick={() => setTabs(TABS.PROJECTS)}
-        className="border-2 border-l-0 border-black h-20 w-24"
+        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
       >
-        <AiOutlineTool className="text-3xl mx-auto mt-2.5" />
-        <div className="mt-4 text-xs text-center">Projects</div>
+        <AiOutlineTool className="text-4xl md:text-5xl" />
+        <div className="text-sm md:text-base mt-1">Projects</div>
       </button>
       <button
-        className="border-2 border-l-0 border-black h-20 w-24"
+        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
         onClick={() => setTabs(TABS.RADIO)}
       >
-        <FiRadio className="text-3xl mx-auto mt-2.5" />
-        <div className="mt-4 text-xs text-center">Radio</div>
+        <FiRadio className="text-4xl md:text-5xl" />
+        <div className="text-sm md:text-base mt-1">Radio</div>
       </button>
       <a
         href={Pdf}
         rel="noopener noreferrer"
         target="_blank"
-        className="border-2 border-l-0 border-black h-20 w-24"
+        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
       >
-        <AiOutlineFileText className="text-3xl mx-auto mt-2.5" />
-        <div className="mt-4 text-xs text-center">Resume</div>
+        <AiOutlineFileText className="text-4xl md:text-5xl" />
+        <div className="text-sm md:text-base mt-1">Resume</div>
       </a>
     </div>
   )
