@@ -3,6 +3,7 @@
 import { useRef, useState } from "react"
 import WaveForm from "./Waveform"
 import Music from "../../../../Resources/Ghostrifter-Official-City-Lights.mp3"
+import AudioControls from "../AudioControls"
 
 interface AnalyzerData {
   analyzer: AnalyserNode
@@ -14,52 +15,51 @@ const AudioVisualizer = () => {
   const [analyzerData, setAnalyzerData] = useState<AnalyzerData | null>(null)
   const audioElmRef = useRef<HTMLAudioElement | null>(null)
 
-  // audioAnalyzer function analyzes the audio and sets the analyzerData state
   const audioAnalyzer = () => {
-    // create a new AudioContext
-    const audioCtx = new (window.AudioContext || window.AudioContext)()
-    // create an analyzer node with a buffer size of 2048
-    const analyzer = audioCtx.createAnalyser()
-    analyzer.fftSize = 2048
+    try {
+      const audioCtx = new (window.AudioContext || window.AudioContext)()
+      const analyzer = audioCtx.createAnalyser()
+      analyzer.fftSize = 512
+      analyzer.smoothingTimeConstant = 0.9
 
-    const bufferLength = analyzer.frequencyBinCount
-    const dataArray = new Uint8Array(bufferLength)
-    const audioElement = new Audio(Music) as HTMLAudioElement
-    const source = audioCtx.createMediaElementSource(audioElement)
-    source.connect(analyzer)
-    source.connect(audioCtx.destination)
-    audioElement.onended = () => {
-      source.disconnect()
-      // Additional actions you want to perform when the audio ends
+      const bufferLength = analyzer.frequencyBinCount
+      const dataArray = new Uint8Array(bufferLength)
+      
+      if (audioElmRef.current) {
+        const source = audioCtx.createMediaElementSource(audioElmRef.current)
+        source.connect(analyzer)
+        analyzer.connect(audioCtx.destination)
+        
+        setAnalyzerData({ analyzer, bufferLength, dataArray })
+      }
+    } catch (error) {
+      console.error("Error setting up audio analyzer:", error)
     }
-
-    // set the analyzerData state with the analyzer, bufferLength, and dataArray
-    setAnalyzerData({ analyzer, bufferLength, dataArray })
   }
 
   // onFileChange function handles the file input and triggers the audio analysis
 
   console.log(analyzerData)
   return (
-    <div className="App">
-      {analyzerData && (
-        <>
-          <div>hi</div>
+    <div className="w-full h-full flex flex-col">
+      <div className="relative w-full h-[300px]">
+        {analyzerData && (
           <WaveForm
             dataArray={analyzerData.dataArray}
             analyzer={analyzerData.analyzer}
             bufferLength={analyzerData.bufferLength}
           />
-        </>
-      )}
-      <div style={{}}>
+        )}
+      </div>
+      <div className="mt-4">
+        <AudioControls 
+          audioRef={audioElmRef}
+          onPlay={audioAnalyzer}
+        />
         <audio
-          src={Music ?? ""}
-          controls
+          className="hidden"
+          src={Music}
           ref={audioElmRef}
-          onPlay={() => {
-            audioAnalyzer()
-          }}
         />
       </div>
     </div>
