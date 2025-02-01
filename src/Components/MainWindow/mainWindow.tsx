@@ -71,25 +71,32 @@ const MainWindow = () => {
 
   return (
     <>
-      <div className="container fixed inset-0 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10 w-full md:w-[650px] md:h-[750px] md:max-w-[650px] md:max-h-[750px]">
-        <Draggable handle="strong" disabled={window.innerWidth < 768}>
-          <div className="box no-cursor bg-[#ffc9c9] w-full px-2 pb-2">
-            <div className="flex flex-row mb-1.5 pt-1">
-              <AiOutlineCloseSquare className="text-3xl" />
-              <IoIosArrowUp className="ml-1 text-3xl" />
-              <strong className="cursor ml-2 flex-grow border-b-3 border-t-3 mb-0.5 mt-1 h-4 border-black" />
-            </div>
-            {tabs === TABS.HOME && <LoadingTerminal />}
-            {tabs === TABS.ABOUT && <About />}
-            {tabs === TABS.PROJECTS && <Projects />}
-            {tabs === TABS.SKILLS && <Skills />}
-            {tabs === TABS.RADIO && <Radio />}
-            {tabs === TABS.RESUME && <Resume />}
+      <div className="container fixed inset-0 md:flex md:items-center md:justify-center z-10">
+        <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[650px]">
+          <Draggable handle="strong" disabled={window.innerWidth < 768}>
+            <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2">
+              <div className="flex flex-row mb-1.5 pt-1">
+                <AiOutlineCloseSquare className="text-3xl" />
+                <IoIosArrowUp className="ml-1 text-3xl" />
+                <strong className="cursor ml-2 flex-grow border-b-3 border-t-3 mb-0.5 mt-1 h-4 border-black" />
+              </div>
+              
+              <div className="flex-grow overflow-auto">
+                {tabs === TABS.HOME && <LoadingTerminal />}
+                {tabs === TABS.ABOUT && <About />}
+                {tabs === TABS.PROJECTS && <Projects />}
+                {tabs === TABS.SKILLS && <Skills />}
+                {tabs === TABS.RADIO && <Radio />}
+                {tabs === TABS.RESUME && <Resume />}
+              </div>
 
-            <TaskBar />
-            <NewsFooter />
-          </div>
-        </Draggable>
+              <div className="mt-auto">
+                <TaskBar />
+                <NewsFooter />
+              </div>
+            </div>
+          </Draggable>
+        </div>
       </div>
     </>
   )
