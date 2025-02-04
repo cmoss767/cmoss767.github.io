@@ -87,7 +87,7 @@ const MainWindow = () => {
 
   return (
     <>
-      <div className="container fixed inset-0 md:flex md:items-center md:justify-center z-10">
+      <div className="container fixed inset-0 md:flex md:items-center justify-center z-10">
         <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[500px] md:max-h-[80vh]">
           <Draggable handle="strong" disabled={window.innerWidth < 768}>
             <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2 rounded-lg border-3 border-black shadow-xl">
