@@ -13,7 +13,7 @@ const TaskBar = () => {
   
   const buttons = [
     { icon: AiOutlineSmile, label: "About Me", tab: TABS.ABOUT },
-    { icon: FaSkiing, label: "Skills", tab: TABS.SKILLS },
+    { icon: FaSkiing, label: "OpenWorld", tab: TABS.SKILLS },
     { icon: AiOutlineTool, label: "Projects", tab: TABS.PROJECTS },
     { icon: FiRadio, label: "Radio", tab: TABS.RADIO },
     { icon: AiOutlineFileText, label: "Resume", tab: TABS.RESUME },
