@@ -9,18 +9,18 @@ interface TabWrapperProps {
 const TabWrapper = ({ children }: TabWrapperProps) => {
   const { setTabs } = useWindowContext()
   return (
-    <div className="bg-[#f9efe4] h-[480px] md:h-[375px] w-full border-3 border-black p-2 overflow-auto">
-      <div className="flex flex-row justify-between">
+    <div className="bg-[#f9efe4] h-[400px] w-full border-3 border-black rounded-lg overflow-auto">
+      <div className="sticky top-0 bg-[#f9efe4] p-2 border-b-3 border-black z-10">
         <button
-          className="bg-[#ffc9c9] hover:bg-[#ffc9c9]/80 text-black py-2 px-4 rounded-md"
-          onClick={() => {
-            setTabs(TABS.HOME)
-          }}
+          className="bg-[#ffc9c9] hover:bg-[#ffc9c9]/80 text-black px-4 py-2 rounded-md transition-colors"
+          onClick={() => setTabs(TABS.HOME)}
         >
           Back
         </button>
       </div>
-      {children}
+      <div className="p-4">
+        {children}
+      </div>
     </div>
   )
 }

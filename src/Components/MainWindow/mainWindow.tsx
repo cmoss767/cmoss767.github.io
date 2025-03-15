@@ -1,6 +1,3 @@
-import Draggable from "react-draggable"
-import { AiOutlineCloseSquare } from "react-icons/ai"
-import { IoIosArrowUp } from "react-icons/io"
 import { useEffect } from "react"
 import About from "../Windows/About"
 import Skills from "../Windows/Skills/Skills"
@@ -8,7 +5,6 @@ import Projects from "../Windows/Projects/Projects"
 import LoadingTerminal from "./LoadingTerminal"
 import NewsFooter from "../NewsFooter"
 import { useWindowContext } from "../../Context/WindowContext"
-
 import Radio from "../Windows/Radio/Radio"
 import TaskBar from "./TaskBar"
 import Resume from "../Windows/Resume/Resume"
@@ -21,6 +17,7 @@ export enum TABS {
   RADIO = "RADIO",
   RESUME = "RESUME",
 }
+
 export interface ShowTextType {
   text1: boolean
   text2: boolean
@@ -35,25 +32,8 @@ export interface ShowDotsType {
   dots3: boolean
 }
 
-/**
- * MainWindow Component
- * 
- * The primary container for the application. Handles:
- * - Desktop/Mobile responsive layout
- * - Draggable window functionality (desktop only)
- * - Tab content rendering
- * - Loading animation sequence
- * 
- * Structure:
- * - Pink outer container (non-scrollable)
- *   - Window title bar with drag handle
- *   - Content area (white container inside TabWrapper)
- *   - TaskBar
- *   - NewsFooter
- */
 const MainWindow = () => {
-  const { showDots, setShowDots, showText, setShowText, tabs } =
-    useWindowContext()
+  const { showDots, setShowDots, showText, setShowText, tabs } = useWindowContext()
 
   useEffect(() => {
     if (showDots?.dots1 || showDots?.dots2 || showDots?.dots3) {
@@ -86,38 +66,32 @@ const MainWindow = () => {
   }, [showDots])
 
   return (
-    <>
-      <div className="container fixed inset-0 md:flex md:items-center justify-center z-10">
-        <div className="flex flex-col h-screen w-full md:h-[750px] md:w-[500px] md:max-h-[80vh]">
-          <Draggable handle="strong" disabled={window.innerWidth < 768}>
-            <div className="box no-cursor bg-[#ffc9c9] flex flex-col h-full w-full px-2 pb-2 rounded-lg border-3 border-black shadow-xl">
-              {/* Window Title Bar */}
-              <div className="flex flex-row items-center gap-2 py-2 mb-2">
-                <AiOutlineCloseSquare className="text-3xl hover:opacity-80 transition-opacity" />
-                <IoIosArrowUp className="text-3xl hover:opacity-80 transition-opacity" />
-                <strong className="cursor flex-grow border-y-3 border-black h-4" />
-              </div>
-              
-              {/* Main Content Area */}
-              <div className="flex-grow overflow-hidden">
-                {tabs === TABS.HOME && <LoadingTerminal />}
-                {tabs === TABS.ABOUT && <About />}
-                {tabs === TABS.PROJECTS && <Projects />}
-                {tabs === TABS.SKILLS && <Skills />}
-                {tabs === TABS.RADIO && <Radio />}
-                {tabs === TABS.RESUME && <Resume />}
-              </div>
+    <div className="w-full min-h-screen flex items-center justify-center p-4">
+      <div className=" max-w-md bg-[#ffc9c9] rounded-lg border-3 border-black shadow-xl flex flex-col">
+        {/* Window Title Bar */}
+        <div className="flex items-center gap-2 p-2 border-b-3 border-black">
+          <div className="w-3 h-3 rounded-full bg-black" />
+          <div className="w-3 h-3 rounded-full bg-black" />
+          <div className="w-3 h-3 rounded-full bg-black" />
+        </div>
+        
+        {/* Main Content Area */}
+        <div className="flex-grow overflow-hidden p-4">
+          {tabs === TABS.HOME && <LoadingTerminal />}
+          {tabs === TABS.ABOUT && <About />}
+          {tabs === TABS.PROJECTS && <Projects />}
+          {tabs === TABS.SKILLS && <Skills />}
+          {tabs === TABS.RADIO && <Radio />}
+          {tabs === TABS.RESUME && <Resume />}
+        </div>
 
-              {/* Footer Elements */}
-              <div className="flex-shrink-0">
-                <TaskBar />
-                <NewsFooter />
-              </div>
-            </div>
-          </Draggable>
+        {/* Footer Elements */}
+        <div className="mt-auto">
+          <TaskBar />
+          <NewsFooter />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

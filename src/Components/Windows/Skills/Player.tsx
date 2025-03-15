@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import characterSprite from '../../../Resources/character-sprite.png'
 
 interface PlayerProps {
   position: { x: number; y: number }
@@ -8,18 +7,19 @@ interface PlayerProps {
   isMoving: boolean
 }
 
-// These values are based on your specific sprite sheet
-const SPRITE_WIDTH = 24  // Width of one frame in pixels
-const SPRITE_HEIGHT = 24 // Height of one frame
-const SCALE = 2 // Scale up the sprite
-const ANIMATION_FRAMES = 8 // Number of frames in walking animation
+// Sprite sheet configuration
+const SPRITE_SIZE = 32 // Size of each sprite frame
+const SCALE = 1 // We'll use the natural size since we're using a proper pixel art sprite
+const ANIMATION_FRAMES = 4 // 4 frames per direction
 const ANIMATION_SPEED = 150 // ms per frame
 
 // Row indices for different animations in the sprite sheet
-const WALK_DOWN_ROW = 10  // Adjust this to point to the walking animation row you want
-const WALK_LEFT_ROW = 9
-const WALK_RIGHT_ROW = 11
-const WALK_UP_ROW = 8
+const SPRITE_ROWS = {
+  down: 0,
+  left: 1,
+  right: 2,
+  up: 3
+}
 
 const Player = ({ position, tileSize, direction, isMoving }: PlayerProps) => {
   const [frameIndex, setFrameIndex] = useState(0)
@@ -37,28 +37,20 @@ const Player = ({ position, tileSize, direction, isMoving }: PlayerProps) => {
     return () => clearInterval(interval)
   }, [isMoving])
 
-  const getRowIndex = () => {
-    switch(direction) {
-      case 'down': return WALK_DOWN_ROW
-      case 'left': return WALK_LEFT_ROW
-      case 'right': return WALK_RIGHT_ROW
-      case 'up': return WALK_UP_ROW
-      default: return WALK_DOWN_ROW
-    }
-  }
+  // Get the current row in the sprite sheet based on direction
+  const spriteRow = SPRITE_ROWS[direction]
 
   return (
     <div 
-      className="absolute transition-all duration-100"
+      className="absolute transition-transform duration-100"
       style={{
-        width: SPRITE_WIDTH * SCALE,
-        height: SPRITE_HEIGHT * SCALE,
-        left: position.x * tileSize,
-        top: position.y * tileSize,
-        backgroundImage: `url(${characterSprite})`,
-        backgroundSize: 'auto',
+        width: SPRITE_SIZE,
+        height: SPRITE_SIZE,
+        transform: `translate(${position.x * tileSize}px, ${position.y * tileSize}px)`,
+        backgroundImage: `url('/pixel-character.png')`, // We'll need to add this sprite sheet
+        backgroundPosition: `-${frameIndex * SPRITE_SIZE}px -${spriteRow * SPRITE_SIZE}px`,
         imageRendering: 'pixelated',
-        backgroundPosition: `-${frameIndex * SPRITE_WIDTH}px -${getRowIndex() * SPRITE_HEIGHT}px`
+        zIndex: 10
       }}
     />
   )

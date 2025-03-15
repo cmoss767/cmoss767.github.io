@@ -5,49 +5,32 @@ import {
 } from "react-icons/ai"
 import { FiRadio } from "react-icons/fi"
 import { FaSkiing } from "react-icons/fa"
-import { Dispatch, SetStateAction } from "react"
 import { TABS } from "./mainWindow"
 import { useWindowContext } from "../../Context/WindowContext"
 
 const TaskBar = () => {
   const { setTabs } = useWindowContext()
+  
+  const buttons = [
+    { icon: AiOutlineSmile, label: "About Me", tab: TABS.ABOUT },
+    { icon: FaSkiing, label: "Skills", tab: TABS.SKILLS },
+    { icon: AiOutlineTool, label: "Projects", tab: TABS.PROJECTS },
+    { icon: FiRadio, label: "Radio", tab: TABS.RADIO },
+    { icon: AiOutlineFileText, label: "Resume", tab: TABS.RESUME },
+  ]
+
   return (
-    <div className="flex flex-row mt-2 fixed md:relative bottom-10 md:bottom-auto left-0 w-full bg-[#ffc9c9] md:bg-transparent p-2 md:p-0">
-      <button
-        className="border-3 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
-        onClick={() => setTabs(TABS.ABOUT)}
-      >
-        <AiOutlineSmile className="text-4xl md:text-5xl" />
-        <div className="text-sm md:text-base mt-1">About Me</div>
-      </button>
-      <button
-        onClick={() => setTabs(TABS.SKILLS)}
-        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
-      >
-        <FaSkiing className="text-4xl md:text-5xl" />
-        <div className="text-sm md:text-base mt-1">Skills</div>
-      </button>
-      <button
-        onClick={() => setTabs(TABS.PROJECTS)}
-        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
-      >
-        <AiOutlineTool className="text-4xl md:text-5xl" />
-        <div className="text-sm md:text-base mt-1">Projects</div>
-      </button>
-      <button
-        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
-        onClick={() => setTabs(TABS.RADIO)}
-      >
-        <FiRadio className="text-4xl md:text-5xl" />
-        <div className="text-sm md:text-base mt-1">Radio</div>
-      </button>
-      <button
-        className="border-3 border-l-0 border-black h-20 md:h-28 flex-1 md:w-24 flex flex-col items-center justify-center"
-        onClick={() => setTabs(TABS.RESUME)}
-      >
-        <AiOutlineFileText className="text-4xl md:text-5xl" />
-        <div className="text-sm md:text-base mt-1">Resume</div>
-      </button>
+    <div className="grid grid-cols-5 gap-px  border-black bg-black">
+      {buttons.map(({ icon: Icon, label, tab }, index) => (
+        <button
+          key={label}
+          onClick={() => setTabs(tab)}
+          className="bg-[#ffc9c9] hover:bg-[#ffc9c9]/80 p-2 flex flex-col items-center justify-center transition-colors border-black border-y-2 border-x-1"
+        >
+          <Icon className="text-2xl sm:text-3xl" />
+          <span className="text-xs sm:text-sm mt-1">{label}</span>
+        </button>
+      ))}
     </div>
   )
 }

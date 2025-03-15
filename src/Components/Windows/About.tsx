@@ -3,10 +3,10 @@ import aboutData from "../../Resources/aboutData.json"
 
 const About = () => {
   return (
-    <div>
+    <div className="h-[400px] overflow-y-auto">
       <TabWrapper>
-        <div className="space-y-6 p-4">
-          <h2 className="text-center font-semibold text-xl mb-6">{aboutData.title}</h2>
+        <div className="space-y-4">
+          <h2 className="text-center font-semibold text-xl">{aboutData.title}</h2>
           
           <p className="text-base leading-relaxed">
             {aboutData.intro}
