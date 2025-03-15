@@ -8,7 +8,7 @@ const LoadingTerminal = () => {
   const { showDots, showText } = useWindowContext()
   
   return (
-    <div className="bg-[#f9efe4] min-h-[400px] w-full border-3 border-black rounded-lg p-4 overflow-auto">
+    <div className="bg-[#f9efe4] h-[400px] w-full border-3 border-black rounded-lg p-4 overflow-auto">
       <div className="space-y-4">
         {showText.text1 && (
           <div className="flex items-center">
